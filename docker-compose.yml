@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: virtual_environment
+    image: virtual_environment
+    build:
+      context: ../
+      args:
+        PYTHON_VERSION: $PYTHON_VERSION
+        NEW_LIBS: $NEW_LIBS
+      dockerfile: docker_venv/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ../.venv/lib/python$PYTHON_VERSION/site-packages:/virtual_environment/.venv/lib/python$PYTHON_VERSION/site-packages
+      - ../poetry.lock:/virtual_environment/poetry.lock
+      - ../pyproject.toml:/virtual_environment/pyproject.toml
