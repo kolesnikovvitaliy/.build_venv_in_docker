@@ -9,7 +9,7 @@ services:
       args:
         PYTHON_VERSION: $PYTHON_VERSION
         NEW_LIBS: $NEW_LIBS
-      dockerfile: docker_venv/Dockerfile
+      dockerfile: .build_venv_in_docker/Dockerfile
     env_file:
       - .env
     volumes:
